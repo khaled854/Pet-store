@@ -1,0 +1,2396 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بيتس هوم | Pets Home</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f0f13;
+      --s1: #16161c;
+      --s2: #1e1e26;
+      --s3: #26262f;
+      --s4: #2f2f3a;
+      --b1: rgba(255, 255, 255, 0.07);
+      --b2: rgba(255, 255, 255, 0.12);
+      --b3: rgba(255, 255, 255, 0.18);
+      --tx: #f2f2f5;
+      --tx2: #a8a8b8;
+      --tx3: #66667a;
+      --ac: #6c8fff;
+      --ac2: rgba(108, 143, 255, 0.13);
+      --ac3: rgba(108, 143, 255, 0.25);
+      --gr: #34d399;
+      --gr2: rgba(52, 211, 153, 0.12);
+      --am: #fbbf24;
+      --am2: rgba(251, 191, 36, 0.12);
+      --rd: #f87171;
+      --rd2: rgba(248, 113, 113, 0.12);
+      --r: 14px;
+      --rs: 9px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: var(--bg);
+      color: var(--tx);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6
+    }
+
+    body.en {
+      font-family: 'Inter', sans-serif;
+      direction: ltr
+    }
+
+    ::-webkit-scrollbar {
+      width: 5px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--s1)
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--s3);
+      border-radius: 3px
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 300;
+      background: rgba(15, 15, 19, 0.95);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--b1)
+    }
+
+    .nw {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      height: 62px;
+      gap: 14px
+    }
+
+    .nlogo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--tx);
+      flex-shrink: 0
+    }
+
+    .lic {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #6c8fff, #a78bfa);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px
+    }
+
+    .nlogo .nm {
+      font-size: 17px;
+      font-weight: 700;
+      display: block
+    }
+
+    .nlogo .sb {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--tx3);
+      display: block;
+      margin-top: -2px
+    }
+
+    .sbar {
+      flex: 1;
+      max-width: 480px;
+      position: relative
+    }
+
+    .sbar input {
+      width: 100%;
+      background: var(--s2);
+      border: 1px solid var(--b2);
+      border-radius: 10px;
+      padding: 10px 42px 10px 16px;
+      color: var(--tx);
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      transition: border-color .2s, background .2s
+    }
+
+    .sbar input::placeholder {
+      color: var(--tx3)
+    }
+
+    .sbar input:focus {
+      border-color: var(--ac);
+      background: var(--s3)
+    }
+
+    .si {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 13px;
+      color: var(--tx3);
+      pointer-events: none;
+      font-size: 15px
+    }
+
+    body.en .si {
+      right: auto;
+      left: 13px
+    }
+
+    body.en .sbar input {
+      padding: 10px 16px 10px 42px
+    }
+
+    .nact {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-right: auto
+    }
+
+    body.en .nact {
+      margin-right: 0;
+      margin-left: auto
+    }
+
+    .lbtn {
+      padding: 7px 13px;
+      border-radius: 8px;
+      border: 1px solid var(--b2);
+      background: transparent;
+      color: var(--tx2);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all .2s;
+      white-space: nowrap
+    }
+
+    .lbtn:hover {
+      background: var(--s3);
+      color: var(--tx);
+      border-color: var(--b3)
+    }
+
+    .cartbtn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px;
+      border-radius: 9px;
+      background: var(--ac);
+      color: #fff;
+      border: none;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+      white-space: nowrap;
+      position: relative
+    }
+
+    .cartbtn:hover {
+      background: #5a7aff;
+      transform: translateY(-1px)
+    }
+
+    .cartbtn .cc {
+      background: rgba(255, 255, 255, 0.28);
+      border-radius: 20px;
+      padding: 1px 7px;
+      font-size: 11px;
+      font-weight: 700
+    }
+
+    .cartbtn.has {
+      background: linear-gradient(135deg, #6c8fff, #a78bfa)
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #141420, #1a1a2e 50%, #141420);
+      border-bottom: 1px solid var(--b1);
+      padding: 48px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(108, 143, 255, 0.07), transparent 70%);
+      pointer-events: none
+    }
+
+    .hi {
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative
+    }
+
+    .hero h1 {
+      font-size: clamp(1.7rem, 4vw, 2.7rem);
+      font-weight: 900;
+      letter-spacing: -.02em;
+      margin-bottom: 10px;
+      line-height: 1.2
+    }
+
+    .hero h1 span {
+      color: var(--ac)
+    }
+
+    .hero p {
+      font-size: clamp(.88rem, 2vw, 1rem);
+      color: var(--tx2);
+      margin-bottom: 24px
+    }
+
+    .hstats {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap
+    }
+
+    .hst .num {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--ac)
+    }
+
+    .hst .lbl {
+      font-size: 11px;
+      color: var(--tx3)
+    }
+
+    /* ── LAYOUT ── */
+    .mw {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 24px 20px 60px;
+      display: flex;
+      gap: 22px
+    }
+
+    /* ── SIDEBAR ── */
+    .side {
+      width: 224px;
+      flex-shrink: 0
+    }
+
+    @media(max-width:900px) {
+      .side {
+        display: none
+      }
+    }
+
+    .sc {
+      background: var(--s1);
+      border: 1px solid var(--b1);
+      border-radius: var(--r);
+      padding: 18px;
+      margin-bottom: 14px
+    }
+
+    .st {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      color: var(--tx3);
+      margin-bottom: 13px
+    }
+
+    .cl2 {
+      display: flex;
+      flex-direction: column;
+      gap: 2px
+    }
+
+    .ci {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 11px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all .18s;
+      color: var(--tx2);
+      font-size: 14px;
+      font-weight: 500;
+      border: 1px solid transparent
+    }
+
+    .ci:hover {
+      background: var(--s2);
+      color: var(--tx)
+    }
+
+    .ci.act {
+      background: var(--ac2);
+      color: var(--ac);
+      border-color: var(--ac3)
+    }
+
+    .cion {
+      font-size: 17px;
+      margin-left: 8px
+    }
+
+    body.en .cion {
+      margin-left: 0;
+      margin-right: 8px
+    }
+
+    .cco {
+      background: var(--s3);
+      border-radius: 20px;
+      padding: 2px 7px;
+      font-size: 11px;
+      color: var(--tx3)
+    }
+
+    .ci.act .cco {
+      background: var(--ac3);
+      color: var(--ac)
+    }
+
+    .pf label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--tx2);
+      margin-bottom: 10px
+    }
+
+    .pf label span {
+      color: var(--ac);
+      font-weight: 600
+    }
+
+    .pf input[type=range] {
+      width: 100%;
+      accent-color: var(--ac);
+      height: 4px;
+      border-radius: 2px;
+      background: var(--s3);
+      outline: none;
+      border: none;
+      cursor: pointer
+    }
+
+    /* ── PRODUCTS ── */
+    .pa {
+      flex: 1;
+      min-width: 0
+    }
+
+    .ph {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      gap: 10px
+    }
+
+    .rt {
+      font-size: 14px;
+      color: var(--tx2)
+    }
+
+    .rt b {
+      color: var(--tx)
+    }
+
+    .ss {
+      background: var(--s2);
+      border: 1px solid var(--b2);
+      color: var(--tx);
+      font-family: inherit;
+      font-size: 13px;
+      padding: 8px 13px;
+      border-radius: 8px;
+      outline: none;
+      cursor: pointer
+    }
+
+    .ss:focus {
+      border-color: var(--ac)
+    }
+
+    /* MOBILE CATS */
+    .mc {
+      display: none;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      margin-bottom: 18px;
+      scrollbar-width: none
+    }
+
+    .mc::-webkit-scrollbar {
+      display: none
+    }
+
+    @media(max-width:900px) {
+      .mc {
+        display: flex
+      }
+    }
+
+    .mci {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 13px;
+      border-radius: 20px;
+      border: 1px solid var(--b2);
+      background: var(--s1);
+      color: var(--tx2);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all .18s;
+      flex-shrink: 0
+    }
+
+    .mci:hover,
+    .mci.act {
+      border-color: var(--ac);
+      color: var(--ac);
+      background: var(--ac2)
+    }
+
+    /* ── GRID ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 15px
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--s1);
+      border: 1px solid var(--b1);
+      border-radius: var(--r);
+      overflow: hidden;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(108, 143, 255, .3);
+      box-shadow: 0 14px 44px rgba(0, 0, 0, .55), 0 0 0 1px rgba(108, 143, 255, .1)
+    }
+
+    .cim {
+      height: 170px;
+      background: var(--s2);
+      position: relative;
+      overflow: hidden
+    }
+
+    .cim img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s ease
+    }
+
+    .card:hover .cim img {
+      transform: scale(1.06)
+    }
+
+    .cim .placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+      background: var(--s2)
+    }
+
+    .bdg {
+      position: absolute;
+      top: 9px;
+      right: 9px;
+      padding: 4px 9px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      z-index: 2
+    }
+
+    body.en .bdg {
+      right: auto;
+      left: 9px
+    }
+
+    .bn {
+      background: var(--ac2);
+      color: var(--ac);
+      border: 1px solid var(--ac3)
+    }
+
+    .bp {
+      background: var(--am2);
+      color: var(--am);
+      border: 1px solid rgba(251, 191, 36, .28)
+    }
+
+    .ba {
+      background: var(--gr2);
+      color: var(--gr);
+      border: 1px solid rgba(52, 211, 153, .22)
+    }
+
+    .cb2 {
+      padding: 14px 15px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px
+    }
+
+    .ccat {
+      font-size: 10px;
+      color: var(--tx3);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .07em
+    }
+
+    .cname {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--tx);
+      line-height: 1.25
+    }
+
+    .cen {
+      font-size: 11.5px;
+      color: var(--tx3);
+      font-weight: 400
+    }
+
+    .cdesc {
+      font-size: 12px;
+      color: var(--tx2);
+      line-height: 1.5;
+      flex: 1
+    }
+
+    .cf {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 6px;
+      gap: 8px
+    }
+
+    .cp {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--ac);
+      letter-spacing: -.02em
+    }
+
+    .cp .cur {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--tx3);
+      margin-right: 2px
+    }
+
+    body.en .cp .cur {
+      margin-right: 0;
+      margin-left: 2px
+    }
+
+    .ab {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 7px 12px;
+      border-radius: 7px;
+      background: var(--ac2);
+      border: 1px solid var(--ac3);
+      color: var(--ac);
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .18s;
+      white-space: nowrap;
+      flex-shrink: 0
+    }
+
+    .ab:hover {
+      background: var(--ac);
+      color: #fff
+    }
+
+    .ab.added {
+      background: var(--gr2);
+      color: var(--gr);
+      border-color: rgba(52, 211, 153, .3)
+    }
+
+    .es {
+      grid-column: 1/-1;
+      text-align: center;
+      padding: 56px 20px;
+      color: var(--tx3)
+    }
+
+    .es .ico {
+      font-size: 46px;
+      margin-bottom: 14px;
+      display: block
+    }
+
+    .es h3 {
+      font-size: 18px;
+      color: var(--tx2);
+      margin-bottom: 6px
+    }
+
+    /* ── CART PANEL ── */
+    .cart-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 400;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(6px)
+    }
+
+    .cart-overlay.open {
+      display: block
+    }
+
+    .cart-panel {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: min(420px, 100vw);
+      background: var(--s1);
+      border-left: 1px solid var(--b2);
+      z-index: 401;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(110%);
+      transition: transform .32s cubic-bezier(.4, 0, .2, 1)
+    }
+
+    body.en .cart-panel {
+      right: auto;
+      left: 0;
+      border-left: none;
+      border-right: 1px solid var(--b2);
+      transform: translateX(-110%)
+    }
+
+    .cart-panel.open {
+      transform: translateX(0) !important
+    }
+
+    .cp-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--b1);
+      flex-shrink: 0
+    }
+
+    .cp-title {
+      font-size: 17px;
+      font-weight: 700
+    }
+
+    .cp-close {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--s3);
+      border: 1px solid var(--b2);
+      color: var(--tx2);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s
+    }
+
+    .cp-close:hover {
+      background: var(--s4);
+      color: var(--tx)
+    }
+
+    .cp-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px
+    }
+
+    .cp-empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: var(--tx3);
+      gap: 12px;
+      text-align: center
+    }
+
+    .cp-empty .eico {
+      font-size: 48px
+    }
+
+    .cp-empty p {
+      font-size: 14px;
+      color: var(--tx2)
+    }
+
+    .ci-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--b1)
+    }
+
+    .ci-row:last-child {
+      border-bottom: none
+    }
+
+    .ci-img {
+      width: 64px;
+      height: 64px;
+      border-radius: 10px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--s2)
+    }
+
+    .ci-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    .ci-img .ep {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px
+    }
+
+    .ci-info {
+      flex: 1;
+      min-width: 0
+    }
+
+    .ci-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--tx);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis
+    }
+
+    .ci-price {
+      font-size: 13px;
+      color: var(--ac);
+      font-weight: 600;
+      margin-top: 2px
+    }
+
+    .ci-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0
+    }
+
+    .qbtn {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      border: 1px solid var(--b2);
+      background: var(--s3);
+      color: var(--tx2);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .18s;
+      font-weight: 700;
+      line-height: 1
+    }
+
+    .qbtn:hover {
+      background: var(--s4);
+      color: var(--tx);
+      border-color: var(--b3)
+    }
+
+    .qbtn.minus:hover {
+      background: var(--rd2);
+      color: var(--rd);
+      border-color: rgba(248, 113, 113, .3)
+    }
+
+    .qnum {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--tx);
+      min-width: 20px;
+      text-align: center
+    }
+
+    .delbtn {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      border: 1px solid rgba(248, 113, 113, .2);
+      background: var(--rd2);
+      color: var(--rd);
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .18s;
+      margin-left: 4px
+    }
+
+    body.en .delbtn {
+      margin-left: 0;
+      margin-right: 4px
+    }
+
+    .delbtn:hover {
+      background: var(--rd);
+      color: #fff
+    }
+
+    .cp-foot {
+      padding: 16px 20px;
+      border-top: 1px solid var(--b1);
+      flex-shrink: 0;
+      background: var(--s1)
+    }
+
+    .cp-summary {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px
+    }
+
+    .cs-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: var(--tx2)
+    }
+
+    .cs-row.total {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--tx);
+      border-top: 1px solid var(--b2);
+      padding-top: 8px;
+      margin-top: 2px
+    }
+
+    .cs-row.total span:last-child {
+      color: var(--ac)
+    }
+
+    .cp-btns {
+      display: flex;
+      gap: 10px
+    }
+
+    .clearbtn {
+      flex: 1;
+      padding: 12px;
+      border-radius: 10px;
+      background: var(--rd2);
+      border: 1px solid rgba(248, 113, 113, .25);
+      color: var(--rd);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s
+    }
+
+    .clearbtn:hover {
+      background: var(--rd);
+      color: #fff
+    }
+
+    .checkoutbtn {
+      flex: 2;
+      padding: 12px;
+      border-radius: 10px;
+      background: #25d366;
+      border: none;
+      color: #fff;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px
+    }
+
+    .checkoutbtn:hover {
+      background: #1da851
+    }
+
+    /* ── CHECKOUT MODAL ── */
+    .co {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 600;
+      background: rgba(0, 0, 0, .82);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 16px
+    }
+
+    .co.open {
+      display: flex
+    }
+
+    .cobox {
+      background: var(--s1);
+      border: 1px solid var(--b2);
+      border-radius: 20px;
+      max-width: 500px;
+      width: 100%;
+      max-height: 92vh;
+      overflow-y: auto;
+      animation: mIn .3s ease
+    }
+
+    .co-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--b1);
+      flex-shrink: 0
+    }
+
+    .co-title {
+      font-size: 17px;
+      font-weight: 700
+    }
+
+    .co-close {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--s3);
+      border: 1px solid var(--b2);
+      color: var(--tx2);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s
+    }
+
+    .co-close:hover {
+      background: var(--s4);
+      color: var(--tx)
+    }
+
+    .co-body {
+      padding: 20px
+    }
+
+    .co-slbl {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      color: var(--tx3);
+      margin-bottom: 10px;
+      margin-top: 4px
+    }
+
+    .co-field {
+      margin-bottom: 12px
+    }
+
+    .co-field label {
+      display: block;
+      font-size: 13px;
+      color: var(--tx2);
+      margin-bottom: 5px;
+      font-weight: 500
+    }
+
+    .co-field label .req {
+      color: var(--rd)
+    }
+
+    .co-field input,
+    .co-field textarea {
+      width: 100%;
+      background: var(--s2);
+      border: 1px solid var(--b2);
+      border-radius: 9px;
+      padding: 11px 14px;
+      color: var(--tx);
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      transition: border-color .2s, background .2s;
+      resize: none
+    }
+
+    .co-field input::placeholder,
+    .co-field textarea::placeholder {
+      color: var(--tx3)
+    }
+
+    .co-field input:focus,
+    .co-field textarea:focus {
+      border-color: var(--ac);
+      background: var(--s3)
+    }
+
+    .co-field input.err {
+      border-color: var(--rd) !important
+    }
+
+    .err-msg {
+      font-size: 12px;
+      color: var(--rd);
+      margin-top: 4px;
+      display: none
+    }
+
+    .err-msg.show {
+      display: block
+    }
+
+    .co-row2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px
+    }
+
+    @media(max-width:420px) {
+      .co-row2 {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .co-summary {
+      background: var(--s2);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 18px
+    }
+
+    .co-srow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 0;
+      border-bottom: 1px solid var(--b1);
+      font-size: 13px
+    }
+
+    .co-srow:last-child {
+      border-bottom: none
+    }
+
+    .co-sname {
+      color: var(--tx2);
+      flex: 1
+    }
+
+    .co-sqty {
+      color: var(--tx3);
+      margin: 0 8px;
+      font-size: 12px
+    }
+
+    .co-sprice {
+      color: var(--ac);
+      font-weight: 600;
+      white-space: nowrap
+    }
+
+    .co-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 10px;
+      margin-top: 8px;
+      border-top: 1px solid var(--b2);
+      font-size: 15px;
+      font-weight: 700
+    }
+
+    .co-total span:last-child {
+      color: var(--ac);
+      font-size: 18px
+    }
+
+    .wa-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      background: #25d366;
+      border: none;
+      color: #fff;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 4px
+    }
+
+    .wa-btn:hover {
+      background: #1da851;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, .3)
+    }
+
+    /* ── MODAL ── */
+    .mo {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(0, 0, 0, .72);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px
+    }
+
+    .mo.open {
+      display: flex
+    }
+
+    .mbox {
+      background: var(--s1);
+      border: 1px solid var(--b2);
+      border-radius: 20px;
+      max-width: 520px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      animation: mIn .3s ease
+    }
+
+    @keyframes mIn {
+      from {
+        opacity: 0;
+        transform: scale(.94) translateY(20px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    .mimg {
+      height: 220px;
+      overflow: hidden;
+      border-radius: 20px 20px 0 0;
+      position: relative
+    }
+
+    .mimg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    .mimg .mep {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 90px;
+      background: var(--s2)
+    }
+
+    .mbody {
+      padding: 22px
+    }
+
+    .mcat {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      color: var(--tx3);
+      margin-bottom: 7px
+    }
+
+    .mname {
+      font-size: 21px;
+      font-weight: 900;
+      margin-bottom: 3px;
+      letter-spacing: -.02em
+    }
+
+    .men2 {
+      font-size: 13px;
+      color: var(--tx3);
+      margin-bottom: 14px
+    }
+
+    .mdesc {
+      font-size: 14px;
+      color: var(--tx2);
+      line-height: 1.7;
+      margin-bottom: 18px
+    }
+
+    .mspecs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+      margin-bottom: 18px
+    }
+
+    .sp {
+      background: var(--s2);
+      border-radius: 8px;
+      padding: 11px
+    }
+
+    .spl {
+      font-size: 10.5px;
+      color: var(--tx3);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      margin-bottom: 3px
+    }
+
+    .spv {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--tx)
+    }
+
+    .mpr {
+      font-size: 25px;
+      font-weight: 900;
+      color: var(--ac);
+      margin-bottom: 14px
+    }
+
+    .mpr .cu {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--tx3)
+    }
+
+    .mac {
+      display: flex;
+      gap: 10px
+    }
+
+    .bp2 {
+      flex: 1;
+      padding: 12px;
+      border-radius: 10px;
+      background: var(--ac);
+      border: none;
+      color: #fff;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s
+    }
+
+    .bp2:hover {
+      background: #5a7aff
+    }
+
+    .bs2 {
+      padding: 12px 18px;
+      border-radius: 10px;
+      background: var(--s3);
+      border: 1px solid var(--b2);
+      color: var(--tx2);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s
+    }
+
+    .bs2:hover {
+      background: var(--s4);
+      color: var(--tx)
+    }
+
+    .mcl {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, .55);
+      border: 1px solid rgba(255, 255, 255, .15);
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s;
+      z-index: 10
+    }
+
+    html[dir=rtl] .mcl {
+      left: auto;
+      right: 12px
+    }
+
+    .mcl:hover {
+      background: rgba(0, 0, 0, .8)
+    }
+
+    .mwr {
+      position: relative
+    }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%) translateY(72px);
+      background: var(--s2);
+      border: 1px solid var(--b2);
+      color: var(--tx);
+      padding: 11px 18px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 500;
+      z-index: 999;
+      transition: transform .35s cubic-bezier(.34, 1.56, .64, 1);
+      white-space: nowrap;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, .5);
+      display: flex;
+      align-items: center;
+      gap: 9px
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0)
+    }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:640px) {
+      .nw {
+        padding: 0 14px;
+        gap: 9px
+      }
+
+      .hero {
+        padding: 32px 16px
+      }
+
+      .mw {
+        padding: 14px 14px 48px
+      }
+
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+        gap: 11px
+      }
+
+      .cim {
+        height: 140px
+      }
+
+      .cartbtn .label {
+        display: none
+      }
+
+      .mspecs {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media(max-width:380px) {
+      .grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .cb2 {
+        padding: 11px 12px
+      }
+
+      .cname {
+        font-size: 13px
+      }
+
+      .cp {
+        font-size: 13px
+      }
+
+      .ab {
+        padding: 6px 9px;
+        font-size: 11px
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="nw">
+      <a href="#" class="nlogo">
+        <div class="lic">🐾</div>
+        <div>
+          <span class="nm ar-t">بيتس هوم</span>
+          <span class="nm en-t" style="display:none">Pets Home</span>
+          <span class="sb ar-t">متجر الحيوانات الأليفة</span>
+          <span class="sb en-t" style="display:none">Pet Store Egypt</span>
+        </div>
+      </a>
+      <div class="sbar">
+        <input type="text" id="searchInput" placeholder="ابحث... مثل: قط، كلب، ببغاء" oninput="filterAll()">
+        <span class="si">🔍</span>
+      </div>
+      <div class="nact">
+        <button class="lbtn" onclick="toggleLang()">
+          <span class="ar-t">EN</span><span class="en-t" style="display:none">عربي</span>
+        </button>
+        <button class="cartbtn" id="cartBtn" onclick="openCart()">
+          🛒 <span class="label ar-t">السلة</span><span class="label en-t" style="display:none">Cart</span>
+          <span class="cc" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hi">
+      <h1 class="ar-t">اجيب <span>حيوانك</span> المفضل من هنا 🐾</h1>
+      <h1 class="en-t" style="display:none">Find Your <span>Perfect Pet</span> Here 🐾</h1>
+      <p class="ar-t">أسعار حقيقية من السوق المصري — قطط، كلاب، طيور، أسماك وأكثر</p>
+      <p class="en-t" style="display:none">Real prices from the Egyptian market — cats, dogs, birds, fish and more</p>
+      <div class="hstats">
+        <div class="hst">
+          <div class="num">32</div>
+          <div class="lbl ar-t">حيوان متاح</div>
+          <div class="lbl en-t" style="display:none">Animals</div>
+        </div>
+        <div class="hst">
+          <div class="num">6</div>
+          <div class="lbl ar-t">أقسام</div>
+          <div class="lbl en-t" style="display:none">Categories</div>
+        </div>
+        <div class="hst">
+          <div class="num">🇪🇬</div>
+          <div class="lbl ar-t">أسعار مصرية</div>
+          <div class="lbl en-t" style="display:none">EGP Prices</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mw">
+    <aside class="side">
+      <div class="sc">
+        <div class="st ar-t">الأقسام</div>
+        <div class="st en-t" style="display:none">Categories</div>
+        <div class="cl2" id="deskCats"></div>
+      </div>
+      <div class="sc">
+        <div class="st ar-t">السعر الأقصى</div>
+        <div class="st en-t" style="display:none">Max Price</div>
+        <div class="pf">
+          <label>
+            <span class="ar-t">حتى</span><span class="en-t" style="display:none">Up to</span>
+            <span id="priceVal">20,000 جنيه</span>
+          </label>
+          <input type="range" min="100" max="20000" step="100" value="20000" id="priceRange"
+            oninput="onPrice(this.value)">
+        </div>
+      </div>
+    </aside>
+
+    <div class="pa">
+      <div class="mc" id="mobCats"></div>
+      <div class="ph">
+        <div class="rt ar-t">عرض <b id="cntAr">0</b> حيوان</div>
+        <div class="rt en-t" style="display:none">Showing <b id="cntEn">0</b></div>
+        <select class="ss" onchange="sortAll(this.value)">
+          <option value="default">الترتيب الافتراضي / Default</option>
+          <option value="asc">الأرخص أولاً / Price: Low–High</option>
+          <option value="desc">الأغلى أولاً / Price: High–Low</option>
+        </select>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </div>
+
+  <!-- CART OVERLAY + PANEL -->
+  <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+  <div class="cart-panel" id="cartPanel">
+    <div class="cp-head">
+      <span class="cp-title">
+        <span class="ar-t">🛒 سلة التسوق</span>
+        <span class="en-t" style="display:none">🛒 Cart</span>
+      </span>
+      <button class="cp-close" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cp-body" id="cartBody"></div>
+    <div class="cp-foot" id="cartFoot" style="display:none">
+      <div class="cp-summary" id="cartSummary"></div>
+      <div class="cp-btns">
+        <button class="clearbtn" onclick="clearCart()">
+          <span class="ar-t">🗑 حذف الكل</span>
+          <span class="en-t" style="display:none">🗑 Clear All</span>
+        </button>
+        <button class="checkoutbtn" onclick="openCheckout()">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:17px;height:17px;flex-shrink:0">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+            <path
+              d="M12 0C5.373 0 0 5.373 0 12c0 2.136.559 4.14 1.535 5.874L.057 23.89a.75.75 0 00.924.924l6.016-1.478A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.716 9.716 0 01-4.964-1.36l-.355-.213-3.683.904.922-3.564-.232-.368A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z" />
+          </svg>
+          <span class="ar-t">تأكيد عبر واتساب</span>
+          <span class="en-t" style="display:none">Order via WhatsApp</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div class="mo" id="mo" onclick="closeMo(event)">
+    <div class="mwr">
+      <button class="mcl" onclick="closeMo()">✕</button>
+      <div class="mbox" id="mc"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"><span id="tmsg">✅ تم الإضافة</span></div>
+
+  <!-- CHECKOUT MODAL -->
+  <div class="co" id="coModal" onclick="closeCoModal(event)">
+    <div class="cobox">
+      <div class="co-head">
+        <span class="co-title ar-t">📦 إتمام الطلب</span>
+        <span class="co-title en-t" style="display:none">📦 Complete Order</span>
+        <button class="co-close" onclick="closeCoModal()">✕</button>
+      </div>
+      <div class="co-body">
+
+        <!-- order summary -->
+        <div class="co-slbl ar-t">ملخص الطلب</div>
+        <div class="co-slbl en-t" style="display:none">Order Summary</div>
+        <div class="co-summary" id="coSummary"></div>
+
+        <!-- customer info -->
+        <div class="co-slbl ar-t">بيانات العميل</div>
+        <div class="co-slbl en-t" style="display:none">Customer Details</div>
+
+        <div class="co-field">
+          <label><span class="req">*</span> <span class="ar-t">الاسم الكامل</span><span class="en-t"
+              style="display:none">Full Name</span></label>
+          <input type="text" id="coName" placeholder="مثال: أحمد محمد علي">
+          <div class="err-msg ar-t" id="errName">الاسم مطلوب</div>
+          <div class="err-msg en-t" style="display:none" id="errNameEn">Name is required</div>
+        </div>
+
+        <div class="co-row2">
+          <div class="co-field">
+            <label><span class="req">*</span> <span class="ar-t">رقم الفون الأول</span><span class="en-t"
+                style="display:none">Phone 1</span></label>
+            <input type="tel" id="coPhone1" placeholder="01xxxxxxxxx">
+            <div class="err-msg ar-t" id="errPhone1">رقم صحيح مطلوب</div>
+            <div class="err-msg en-t" style="display:none" id="errPhone1En">Valid phone required</div>
+          </div>
+          <div class="co-field">
+            <label><span class="ar-t">رقم الفون الثاني</span><span class="en-t" style="display:none">Phone 2
+                (optional)</span></label>
+            <input type="tel" id="coPhone2" placeholder="اختياري / optional">
+          </div>
+        </div>
+
+        <div class="co-field">
+          <label><span class="req">*</span> <span class="ar-t">العنوان كامل</span><span class="en-t"
+              style="display:none">Full Address</span></label>
+          <input type="text" id="coAddress" placeholder="المحافظة، المنطقة، الشارع، رقم المبنى">
+          <div class="err-msg ar-t" id="errAddr">العنوان مطلوب</div>
+          <div class="err-msg en-t" style="display:none" id="errAddrEn">Address is required</div>
+        </div>
+
+        <div class="co-field">
+          <label><span class="ar-t">ملاحظات إضافية</span><span class="en-t" style="display:none">Additional
+              Notes</span></label>
+          <textarea id="coNotes" rows="3" placeholder="أي تفاصيل إضافية أو طلبات خاصة..."></textarea>
+        </div>
+
+        <button class="wa-btn" onclick="sendWhatsApp()">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+            <path
+              d="M12 0C5.373 0 0 5.373 0 12c0 2.136.559 4.14 1.535 5.874L.057 23.89a.75.75 0 00.924.924l6.016-1.478A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.716 9.716 0 01-4.964-1.36l-.355-.213-3.683.904.922-3.564-.232-.368A9.718 9.718 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z" />
+          </svg>
+          <span class="ar-t">إرسال الطلب على واتساب 📲</span>
+          <span class="en-t" style="display:none">Send Order via WhatsApp 📲</span>
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ── WHATSAPP STORE NUMBER — غيّر الرقم ده لرقمك ──
+    const WA_NUMBER = '201000000000'; // مثال: 201012345678
+    const DATA = [
+      // CATS
+      {
+        id: 1, cat: 'cats', ar: 'قط شيرازي', en: 'Persian Cat',
+        img: 'https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400&q=75',
+        dar: 'من أجمل أنواع القطط، فروه كثيف وطباعه هادئة. مثالي للمنزل.',
+        den: 'Known for its long silky coat and calm temperament. Perfect indoor companion.',
+        price: 1750, bdg: 'pop',
+        sp: { 'العمر': 'شهرين', 'Age': '2 months', 'الجنس': 'ذكر/أنثى', 'Sex': 'M / F', 'التطعيم': 'نعم', 'Vaccine': 'Yes', 'الأصل': 'محلي', 'Origin': 'Local' }
+      },
+
+      {
+        id: 2, cat: 'cats', ar: 'قطة سيامية', en: 'Siamese Cat',
+        img: 'https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?w=400&q=75',
+        dar: 'قطة أنيقة بعيون زرقاء مذهلة وصوت مميز. من أذكى أنواع القطط.',
+        den: 'Elegant cat with striking blue eyes. One of the most intelligent breeds.',
+        price: 500, bdg: 'avail',
+        sp: { 'العمر': '3 أشهر', 'Age': '3 months', 'الجنس': 'أنثى', 'Sex': 'Female', 'التطعيم': 'نعم', 'Vaccine': 'Yes', 'الأصل': 'محلي', 'Origin': 'Local' }
+      },
+
+      {
+        id: 3, cat: 'cats', ar: 'قطة بريطانية', en: 'British Shorthair',
+        img: 'https://images.unsplash.com/photo-1533743983669-94fa5c4338ec?w=400&q=75',
+        dar: 'قطة هادئة ومتوازنة بفروة قصيرة كثيفة وخدود منتفخة.',
+        den: 'Calm and balanced cat with a dense short coat and chubby cheeks.',
+        price: 3000, bdg: 'new',
+        sp: { 'العمر': 'شهرين', 'Age': '2 months', 'الجنس': 'ذكر', 'Sex': 'Male', 'التطعيم': 'نعم', 'Vaccine': 'Yes', 'الأصل': 'مستورد', 'Origin': 'Imported' }
+      },
+
+      {
+        id: 4, cat: 'cats', ar: 'قطة مين كون', en: 'Maine Coon',
+        img: 'https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=400&q=75',
+        dar: 'من أكبر سلالات القطط الأليفة. ودية وذكية جداً.',
+        den: 'One of the largest domestic cat breeds. Friendly and highly intelligent.',
+        price: 5500, bdg: 'new',
+        sp: { 'العمر': '3 أشهر', 'Age': '3 months', 'الجنس': 'ذكر', 'Sex': 'Male', 'التطعيم': 'نعم', 'Vaccine': 'Yes', 'الأصل': 'مستورد', 'Origin': 'Imported' }
+      },
+
+      {
+        id: 5, cat: 'cats', ar: 'قط بلدي مصري', en: 'Egyptian Street Cat',
+        img: 'https://images.unsplash.com/photo-1472491235688-bdc81bdcda41?w=400&q=75',
+        dar: 'القط المصري الأصيل. ذكي وسريع التأقلم وخفيف الرعاية.',
+        den: 'The authentic Egyptian cat. Smart, adaptable, and low maintenance.',
+        price: 150, bdg: 'avail',
+        sp: { 'العمر': 'شهرين', 'Age': '2 months', 'الجنس': 'ذكر/أنثى', 'Sex': 'M / F', 'التطعيم': 'اختياري', 'Vaccine': 'Optional', 'الأصل': 'مصر', 'Origin': 'Egypt' }
+      },
+
+      {
+        id: 6, cat: 'cats', ar: 'قطة راغدول', en: 'Ragdoll Cat',
+        img: 'https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=400&q=75',
+        dar: 'قطة كبيرة هادئة بعيون زرقاء جميلة.',
+        den: 'Large, placid cat with beautiful blue eyes.',
+        price: 4500, bdg: 'new',
+        sp: { 'العمر': '3 أشهر', 'Age': '3 months', 'الجنس': 'أنثى', 'Sex': 'Female', 'التطعيم': 'نعم', 'Vaccine': 'Yes', 'الأصل': 'مستورد', 'Origin': 'Imported' }
+      },
+
+      // DOGS
+      {
+        id: 7, cat: 'dogs', ar: 'كلب هاسكي', en: 'Siberian Husky',
+        img: 'https://images.unsplash.com/photo-1605568427561-40dd23c2acea?w=400&q=75',
+        dar: 'كلب نشيط وودود بعيون فاتنة. يحتاج رياضة يومية.',
+        den: 'Active and friendly with striking eyes. Needs daily exercise.',
+        price: 3000, bdg: 'pop',
+        sp: { 'العمر': '3-4 أشهر', 'Age': '3-4 months', 'الجنس': 'ذكر/أنثى', 'Sex': 'M / F', 'التطعيم': 'نعم', 'Vaccine': 'Yes', 'الحجم': 'كبير', 'Size': 'Large' }
+      },
+
+      {
+        id: 8, cat: 'dogs', ar: 'جولدن ريتريفر', en: 'Golden Retriever',
+        img: 'https://images.unsplash.com/photo-1633722715463-d30f4f325e24?w=400&q=75',
+        dar: 'من أكثر الكلاب شهرة عالمياً. لطيف مع الأطفال ومخلص جداً.',
+        den: "One of the world's most popular breeds. Gentle and loyal.",
+        price: 4000, bdg: 'pop',
+        sp: { 'العمر': '2-3 أشهر', 'Age': '2-3 months', 'الجنس': 'ذكر', 'Sex': 'Male', 'التطعيم': 'نعم', 'Vaccine': 'Yes', 'الحجم': 'كبير', 'Size': 'Large' }
+      },
+
+      {
+        id: 9, cat: 'dogs', ar: 'جيرمن شيبرد', en: 'German Shepherd',
+        img: 'https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?w=400&q=75',
+        dar: 'الكلب البوليسي الأشهر. ذكي جداً وحارس ممتاز.',
+        den: 'Most famous police dog. Very intelligent and excellent guard.',
+        price: 3500, bdg: 'avail',
+        sp: { 'العمر': 'شهرين', 'Age': '2 months', 'الجنس': 'ذكر', 'Sex': 'Male', 'التطعيم': 'نعم', 'Vaccine': 'Yes', 'الحجم': 'كبير', 'Size': 'Large' }
+      },
+
+      {
+        id: 10, cat: 'dogs', ar: 'كلب بودل', en: 'Poodle',
+        img: 'https://images.unsplash.com/photo-1561037404-61cd46aa615b?w=400&q=75',
+        dar: 'كلب أنيق وذكي لا يسبب حساسية.',
+        den: 'Elegant and intelligent, hypoallergenic.',
+        price: 2500, bdg: 'new',
+        sp: { 'العمر': '2-3 أشهر', 'Age': '2-3 months', 'الجنس': 'أنثى', 'Sex': 'Female', 'التطعيم': 'نعم', 'Vaccine': 'Yes', 'الحجم': 'متوسط', 'Size': 'Medium' }
+      },
+
+      {
+        id: 11, cat: 'dogs', ar: 'لولو بوميرانيان', en: 'Pomeranian',
+        img: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&q=75',
+        dar: 'كلب صغير منفوش بشخصية كبيرة. مناسب للشقق.',
+        den: 'Small fluffy dog with a big personality. Great for apartments.',
+        price: 600, bdg: 'pop',
+        sp: { 'العمر': 'شهرين', 'Age': '2 months', 'الجنس': 'ذكر/أنثى', 'Sex': 'M / F', 'التطعيم': 'نعم', 'Vaccine': 'Yes', 'الحجم': 'صغير', 'Size': 'Small' }
+      },
+
+      {
+        id: 12, cat: 'dogs', ar: 'دوبرمان', en: 'Doberman',
+        img: 'https://images.unsplash.com/photo-1616149594537-04eb39d6efa6?w=400&q=75',
+        dar: 'كلب رشيق وذكي. من أفضل كلاب الحراسة.',
+        den: 'Sleek and intelligent. One of the best guard dogs.',
+        price: 1500, bdg: 'avail',
+        sp: { 'العمر': '3 أشهر', 'Age': '3 months', 'الجنس': 'ذكر', 'Sex': 'Male', 'التطعيم': 'نعم', 'Vaccine': 'Yes', 'الحجم': 'كبير', 'Size': 'Large' }
+      },
+
+      // BIRDS
+      {
+        id: 13, cat: 'birds', ar: 'ببغاء اليكساندر', en: 'Alexandrine Parakeet',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Alexandrine_parakeet_%28Psittacula_eupatria%29_male.jpg/400px-Alexandrine_parakeet_%28Psittacula_eupatria%29_male.jpg',
+        dar: 'من أجمل الببغاوات وأكثرها قدرة على الكلام.',
+        den: 'One of the most beautiful and talkative parrots.',
+        price: 1200, bdg: 'pop',
+        sp: { 'العمر': '4-6 أشهر', 'Age': '4-6 months', 'يتكلم': 'نعم', 'Talks': 'Yes', 'الجنس': 'ذكر', 'Sex': 'Male', 'العمر المتوقع': '25-30 سنة', 'Lifespan': '25-30 yrs' }
+      },
+
+      {
+        id: 14, cat: 'birds', ar: 'ببغاء أفريقي رمادي', en: 'African Grey Parrot',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Psittacus_erithacus_-perching_on_tray-8.jpg/400px-Psittacus_erithacus_-perching_on_tray-8.jpg',
+        dar: 'أذكى الببغاوات على الإطلاق. يقلد الكلام بشكل مذهل.',
+        den: 'The most intelligent parrot. Mimics speech with incredible accuracy.',
+        price: 8000, bdg: 'new',
+        sp: { 'العمر': 'سنة', 'Age': '1 year', 'يتكلم': 'نعم', 'Talks': 'Yes', 'الجنس': 'غير محدد', 'Sex': 'Unknown', 'العمر المتوقع': '+50 سنة', 'Lifespan': '50+ yrs' }
+      },
+
+      {
+        id: 15, cat: 'birds', ar: 'بادجي (بادجيرجار)', en: 'Budgerigar',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Melopsittacus_undulatus_-_Parakeet.jpg/400px-Melopsittacus_undulatus_-_Parakeet.jpg',
+        dar: 'طائر صغير جميل وسهل التربية. ألوان متعددة.',
+        den: 'Small beautiful bird, easy to keep. Many color varieties.',
+        price: 80, bdg: 'avail',
+        sp: { 'العمر': '3 أشهر', 'Age': '3 months', 'الجنس': 'زوج', 'Sex': 'Pair', 'يتكلم': 'أحياناً', 'Talks': 'Sometimes', 'العمر المتوقع': '5-8 سنوات', 'Lifespan': '5-8 yrs' }
+      },
+
+      {
+        id: 16, cat: 'birds', ar: 'كناري مغني', en: 'Canary',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Serinus_canaria_-Barnsley%2C_South_Yorkshire%2C_England-8.jpg/400px-Serinus_canaria_-Barnsley%2C_South_Yorkshire%2C_England-8.jpg',
+        dar: 'طائر المغني الشهير. صوته الجميل يملأ المنزل بهجة.',
+        den: "The famous singing bird. Its voice fills the home with joy.",
+        price: 200, bdg: 'avail',
+        sp: { 'العمر': '6 أشهر', 'Age': '6 months', 'الجنس': 'ذكر', 'Sex': 'Male', 'يغني': 'نعم', 'Sings': 'Yes', 'العمر المتوقع': '+10 سنوات', 'Lifespan': '10+ yrs' }
+      },
+
+      {
+        id: 17, cat: 'birds', ar: 'طائر الحب', en: 'Lovebird',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Agapornis_roseicollis_-Tanzania-8.jpg/400px-Agapornis_roseicollis_-Tanzania-8.jpg',
+        dar: 'يعيش في أزواج ويظهر محبة حقيقية.',
+        den: 'Lives in pairs and shows genuine affection.',
+        price: 350, bdg: 'pop',
+        sp: { 'العمر': '3-4 أشهر', 'Age': '3-4 months', 'الجنس': 'زوج', 'Sex': 'Pair', 'يتكلم': 'لا', 'Talks': 'No', 'العمر المتوقع': '10-15 سنة', 'Lifespan': '10-15 yrs' }
+      },
+
+      {
+        id: 18, cat: 'birds', ar: 'كوكاتيل', en: 'Cockatiel',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Nymphicus_hollandicus_-_Lutino.jpg/400px-Nymphicus_hollandicus_-_Lutino.jpg',
+        dar: 'طائر ودود يمكن تدريبه على الصفير والكلام.',
+        den: 'Friendly bird that can be trained to whistle and talk.',
+        price: 450, bdg: 'avail',
+        sp: { 'العمر': '4 أشهر', 'Age': '4 months', 'الجنس': 'ذكر', 'Sex': 'Male', 'يتكلم': 'نعم', 'Talks': 'Yes', 'العمر المتوقع': '15-20 سنة', 'Lifespan': '15-20 yrs' }
+      },
+
+      // FISH
+      {
+        id: 19, cat: 'fish', ar: 'سمكة ذهبية', en: 'Goldfish',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Camponotus_flavomarginatus_ant.jpg/400px-Camponotus_flavomarginatus_ant.jpg',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Goldfish3.jpg/400px-Goldfish3.jpg',
+        dar: 'من أشهر أسماك الزينة. ألوانها الذهبية تزين أي مكان.',
+        den: 'One of the most popular ornamental fish.',
+        price: 20, bdg: 'avail',
+        sp: { 'الحجم': 'صغير', 'Size': 'Small', 'الحوض': '40 لتر+', 'Tank': 'Min 40L', 'الغذاء': 'حبيبات', 'Food': 'Pellets', 'العمر': '10-15 سنة', 'Lifespan': '10-15 yrs' }
+      },
+
+      {
+        id: 20, cat: 'fish', ar: 'سمكة بيتا', en: 'Betta Fish',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Betta_fish_%28Betta_splendens%29.jpg/400px-Betta_fish_%28Betta_splendens%29.jpg',
+        dar: 'أجمل أسماك الزينة بألوانها الزاهية وزعانفها الرائعة.',
+        den: 'Most beautiful ornamental fish with vibrant colors.',
+        price: 80, bdg: 'pop',
+        sp: { 'الحجم': 'صغير', 'Size': 'Small', 'الحوض': '10 لتر+', 'Tank': 'Min 10L', 'الغذاء': 'حبيبات', 'Food': 'Pellets', 'العمر': '2-5 سنوات', 'Lifespan': '2-5 yrs' }
+      },
+
+      {
+        id: 21, cat: 'fish', ar: 'أسماك النيون', en: 'Neon Tetra',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Neontetras.jpg/400px-Neontetras.jpg',
+        dar: 'أسماك صغيرة بخط نيون أزرق ساطع. رائعة في الأسراب.',
+        den: 'Small fish with a bright neon stripe. Stunning in schools.',
+        price: 15, bdg: 'avail',
+        sp: { 'الحجم': 'صغير جداً', 'Size': 'Very Small', 'الحوض': '40 لتر+', 'Tank': 'Min 40L', 'الغذاء': 'طعام دقيق', 'Food': 'Micro pellets', 'العمر': '5-8 سنوات', 'Lifespan': '5-8 yrs' }
+      },
+
+      {
+        id: 22, cat: 'fish', ar: 'سمكة نيمو (الزرد)', en: 'Clownfish / Nemo',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Amphiprion_ocellaris_%28Clown_anemonefish%29_by_Nick_Hobgood.jpg/400px-Amphiprion_ocellaris_%28Clown_anemonefish%29_by_Nick_Hobgood.jpg',
+        dar: 'الشهيرة بشخصية نيمو. برتقالية بخطوط بيضاء مميزة.',
+        den: 'Famous as Nemo. Orange with distinctive white stripes.',
+        price: 350, bdg: 'pop',
+        sp: { 'الحجم': 'صغير', 'Size': 'Small', 'الحوض': 'مياه مالحة 100L+', 'Tank': 'Saltwater 100L+', 'الغذاء': 'متنوع', 'Food': 'Mixed', 'العمر': '6-10 سنوات', 'Lifespan': '6-10 yrs' }
+      },
+
+      {
+        id: 23, cat: 'fish', ar: 'أوسكار', en: 'Oscar Fish',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Astronotus_ocellatus.jpg/400px-Astronotus_ocellatus.jpg',
+        dar: 'سمكة كبيرة ذات شخصية قوية. تتعرف على صاحبها.',
+        den: 'Large fish with a strong personality. Recognizes its owner.',
+        price: 120, bdg: 'avail',
+        sp: { 'الحجم': 'كبير', 'Size': 'Large', 'الحوض': '200 لتر+', 'Tank': 'Min 200L', 'الغذاء': 'متنوع', 'Food': 'Mixed', 'العمر': '10-15 سنة', 'Lifespan': '10-15 yrs' }
+      },
+
+      // SMALL
+      {
+        id: 24, cat: 'small', ar: 'هامستر سوري', en: 'Syrian Hamster',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Goldhamster.jpg/400px-Goldhamster.jpg',
+        dar: 'من أكثر الحيوانات الصغيرة شعبية. لطيف ونشيط.',
+        den: 'One of the most popular small pets. Cute and active.',
+        price: 150, bdg: 'pop',
+        sp: { 'العمر': '6 أسابيع', 'Age': '6 weeks', 'الجنس': 'ذكر/أنثى', 'Sex': 'M / F', 'الغذاء': 'بذور وخضار', 'Food': 'Seeds & veg', 'العمر المتوقع': '2-3 سنوات', 'Lifespan': '2-3 yrs' }
+      },
+
+      {
+        id: 25, cat: 'small', ar: 'هامستر روسي قزم', en: 'Dwarf Hamster',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Dwarf_hamster_2.jpg/400px-Dwarf_hamster_2.jpg',
+        dar: 'هامستر قزم لطيف ومتناهي الصغر. مناسب للأطفال.',
+        den: 'Tiny dwarf hamster, very cute and suitable for children.',
+        price: 100, bdg: 'avail',
+        sp: { 'العمر': '5 أسابيع', 'Age': '5 weeks', 'الجنس': 'ذكر/أنثى', 'Sex': 'M / F', 'الغذاء': 'بذور', 'Food': 'Seeds', 'العمر المتوقع': '1.5-2 سنة', 'Lifespan': '1.5-2 yrs' }
+      },
+
+      {
+        id: 26, cat: 'small', ar: 'أرنب قزم', en: 'Dwarf Rabbit',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/LionHead3.jpg/400px-LionHead3.jpg',
+        dar: 'أرنب صغير فائق اللطافة. هادئ ونظيف.',
+        den: 'Small adorable rabbit. Calm and clean house pet.',
+        price: 500, bdg: 'pop',
+        sp: { 'العمر': 'شهرين', 'Age': '2 months', 'الجنس': 'ذكر/أنثى', 'Sex': 'M / F', 'الغذاء': 'تبن وخضار', 'Food': 'Hay & veg', 'العمر المتوقع': '8-12 سنة', 'Lifespan': '8-12 yrs' }
+      },
+
+      {
+        id: 27, cat: 'small', ar: 'خنزير غيني', en: 'Guinea Pig',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/George_the_guinea_pig.jpg/400px-George_the_guinea_pig.jpg',
+        dar: 'حيوان اجتماعي محبوب. يصدر أصواتاً رائعة.',
+        den: 'Social and beloved small pet. Makes adorable sounds.',
+        price: 400, bdg: 'avail',
+        sp: { 'العمر': '6 أسابيع', 'Age': '6 weeks', 'الجنس': 'ذكر/أنثى', 'Sex': 'M / F', 'الغذاء': 'تبن وخضار', 'Food': 'Hay & veg', 'العمر المتوقع': '4-8 سنوات', 'Lifespan': '4-8 yrs' }
+      },
+
+      // REPTILES
+      {
+        id: 28, cat: 'reptiles', ar: 'سلحفاة برية', en: 'Land Tortoise',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Turtle_-_Chobe_National_Park.jpg/400px-Turtle_-_Chobe_National_Park.jpg',
+        dar: 'سلحفاة هادئة وطويلة العمر. سهلة الرعاية.',
+        den: 'Calm tortoise with a very long lifespan. Easy to care for.',
+        price: 300, bdg: 'avail',
+        sp: { 'العمر': 'سنة', 'Age': '1 year', 'الحجم': 'صغير-متوسط', 'Size': 'Small-Med', 'الغذاء': 'خضار وفواكه', 'Food': 'Veg & fruit', 'العمر المتوقع': '50-100 سنة', 'Lifespan': '50-100 yrs' }
+      },
+
+      {
+        id: 29, cat: 'reptiles', ar: 'سحلية اللحية', en: 'Bearded Dragon',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Pogona_vitticeps_%28Central_bearded_dragon%29.jpg/400px-Pogona_vitticeps_%28Central_bearded_dragon%29.jpg',
+        dar: 'سحلية أليفة وودودة من أستراليا. شخصية هادئة.',
+        den: 'Friendly exotic lizard from Australia. Calm personality.',
+        price: 2500, bdg: 'new',
+        sp: { 'العمر': '4 أشهر', 'Age': '4 months', 'الغذاء': 'حشرات وخضار', 'Food': 'Insects & veg', 'الإضاءة': 'UV مطلوب', 'Light': 'UV required', 'العمر المتوقع': '10-15 سنة', 'Lifespan': '10-15 yrs' }
+      },
+
+      {
+        id: 30, cat: 'reptiles', ar: 'ثعبان الذرة', en: 'Corn Snake',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Pantherophis_guttatus_-_2.jpg/400px-Pantherophis_guttatus_-_2.jpg',
+        dar: 'ثعبان غير سام مناسب للمبتدئين. هادئ الطباع.',
+        den: 'Non-venomous snake, perfect for beginners. Calm nature.',
+        price: 1800, bdg: 'new',
+        sp: { 'العمر': '6 أشهر', 'Age': '6 months', 'الغذاء': 'فئران صغيرة', 'Food': 'Mice', 'الحاوية': '60 سم+', 'Enclosure': 'Min 60cm', 'العمر المتوقع': '15-20 سنة', 'Lifespan': '15-20 yrs' }
+      },
+
+      {
+        id: 31, cat: 'reptiles', ar: 'حرباء يمنية', en: 'Veiled Chameleon',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Chameleon_Chamaeleo_calyptratus.jpg/400px-Chameleon_Chamaeleo_calyptratus.jpg',
+        dar: 'من أجمل الزواحف. تغير لونها حسب مزاجها.',
+        den: "One of the most beautiful reptiles. Changes color based on mood.",
+        price: 3500, bdg: 'new',
+        sp: { 'العمر': '4 أشهر', 'Age': '4 months', 'الغذاء': 'حشرات', 'Food': 'Insects', 'الرطوبة': '70-80%', 'Humidity': '70-80%', 'العمر المتوقع': '5-8 سنوات', 'Lifespan': '5-8 yrs' }
+      },
+
+      {
+        id: 32, cat: 'reptiles', ar: 'ضفدع أرضي', en: 'Pacman Frog',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Ceratophrys_ornata.jpg/400px-Ceratophrys_ornata.jpg',
+        dar: 'ضفدع كسول ومميز بشكله الدائري الغريب.',
+        den: 'Lazy and unique frog with a distinctive round shape.',
+        price: 900, bdg: 'new',
+        sp: { 'العمر': '3 أشهر', 'Age': '3 months', 'الغذاء': 'حشرات', 'Food': 'Insects', 'الرطوبة': '80%+', 'Humidity': '80%+', 'العمر المتوقع': '5-10 سنوات', 'Lifespan': '5-10 yrs' }
+      },
+    ];
+
+    const CATS_DEF = [
+      { k: 'all', ar: 'الكل', en: 'All', em: '🐾' },
+      { k: 'cats', ar: 'قطط', en: 'Cats', em: '🐱' },
+      { k: 'dogs', ar: 'كلاب', en: 'Dogs', em: '🐕' },
+      { k: 'birds', ar: 'طيور', en: 'Birds', em: '🦜' },
+      { k: 'fish', ar: 'أسماك', en: 'Fish', em: '🐟' },
+      { k: 'small', ar: 'حيوانات صغيرة', en: 'Small Pets', em: '🐹' },
+      { k: 'reptiles', ar: 'زواحف', en: 'Reptiles', em: '🦎' },
+    ];
+
+    // CART: {id, qty}
+    let lang = 'ar', activeCat = 'all', maxP = 20000, sortM = 'default';
+    let cart = []; // array of {id, qty}
+
+    function init() { buildCats(); filterAll(); }
+
+    function catLabel(k) { const c = CATS_DEF.find(x => x.k === k); return lang === 'ar' ? c?.ar : c?.en; }
+
+    function buildCats() {
+      const dk = document.getElementById('deskCats');
+      const mb = document.getElementById('mobCats');
+      dk.innerHTML = ''; mb.innerHTML = '';
+      CATS_DEF.forEach(c => {
+        const cnt = c.k === 'all' ? DATA.length : DATA.filter(a => a.cat === c.k).length;
+        const d = document.createElement('div');
+        d.className = 'ci' + (activeCat === c.k ? ' act' : '');
+        d.onclick = () => { activeCat = c.k; buildCats(); filterAll() };
+        d.innerHTML = `<span>${lang === 'ar' ? c.ar : c.en} <span class="cion">${c.em}</span></span><span class="cco">${cnt}</span>`;
+        dk.appendChild(d);
+        const m = document.createElement('button');
+        m.className = 'mci' + (activeCat === c.k ? ' act' : '');
+        m.onclick = () => { activeCat = c.k; buildCats(); filterAll() };
+        m.textContent = c.em + ' ' + (lang === 'ar' ? c.ar : c.en);
+        mb.appendChild(m);
+      });
+    }
+
+    function filterAll() {
+      const q = document.getElementById('searchInput').value.trim().toLowerCase();
+      let list = DATA.filter(a => {
+        const mc = activeCat === 'all' || a.cat === activeCat;
+        const mp = a.price <= maxP;
+        const mq = !q || a.ar.includes(q) || a.en.toLowerCase().includes(q) || a.dar.includes(q) || a.den.toLowerCase().includes(q);
+        return mc && mp && mq;
+      });
+      if (sortM === 'asc') list.sort((a, b) => a.price - b.price);
+      else if (sortM === 'desc') list.sort((a, b) => b.price - a.price);
+      renderGrid(list);
+    }
+
+    function sortAll(v) { sortM = v; filterAll(); }
+    function onPrice(v) {
+      maxP = +v;
+      document.getElementById('priceVal').textContent = (+v).toLocaleString() + (lang === 'ar' ? ' جنيه' : ' EGP');
+      filterAll();
+    }
+
+    const BDG = {
+      new: l => `<span class="bdg bn">${l === 'ar' ? 'جديد' : 'New'}</span>`,
+      pop: l => `<span class="bdg bp">${l === 'ar' ? 'الأكثر طلباً' : 'Popular'}</span>`,
+      avail: l => `<span class="bdg ba">${l === 'ar' ? 'متاح' : 'Available'}</span>`,
+    };
+
+    function imgTag(a, cls = '') {
+      return `<img src="${a.img}" alt="${a.en}" class="${cls}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling&&(this.nextElementSibling.style.display='flex')">`;
+    }
+
+    function renderGrid(list) {
+      const g = document.getElementById('grid');
+      document.getElementById('cntAr').textContent = list.length;
+      document.getElementById('cntEn').textContent = list.length;
+      if (!list.length) {
+        g.innerHTML = `<div class="es"><span class="ico">🔍</span><h3>${lang === 'ar' ? 'مفيش نتايج' : 'No results found'}</h3><p style="color:var(--tx3);font-size:13px">${lang === 'ar' ? 'جرب كلمة تانية' : 'Try a different search term'}</p></div>`;
+        return;
+      }
+      g.innerHTML = list.map(a => {
+        const ci = cart.find(x => x.id === a.id);
+        const inCart = !!ci;
+        const addTxt = inCart ? (lang === 'ar' ? `✓ في السلة (${ci.qty})` : `✓ In Cart (${ci.qty})`) : (lang === 'ar' ? '+ أضف' : '+ Add');
+        return `<div class="card" onclick="openM(${a.id})">
+  <div class="cim">
+    ${imgTag(a)}
+    <div class="placeholder" style="display:none">${a.em || '🐾'}</div>
+    ${(BDG[a.bdg] || (''))(lang)}
+  </div>
+  <div class="cb2">
+    <div class="ccat">${catLabel(a.cat)}</div>
+    <div class="cname">${lang === 'ar' ? a.ar : a.en}</div>
+    <div class="cen">${lang === 'ar' ? a.en : a.ar}</div>
+    <div class="cdesc">${(lang === 'ar' ? a.dar : a.den).substring(0, 68)}…</div>
+    <div class="cf">
+      <div class="cp"><span class="cur">${lang === 'ar' ? 'جنيه' : 'EGP'}</span>${a.price.toLocaleString()}</div>
+      <button class="ab${inCart ? ' added' : ''}" onclick="event.stopPropagation();addCart(${a.id})">${addTxt}</button>
+    </div>
+  </div>
+</div>`;
+      }).join('');
+    }
+
+    // ── CART ──
+    function cartTotal() { return cart.reduce((s, ci) => { const a = DATA.find(x => x.id === ci.id); return s + (a ? a.price * ci.qty : 0); }, 0); }
+    function cartTotalQty() { return cart.reduce((s, ci) => s + ci.qty, 0); }
+
+    function addCart(id) {
+      const ci = cart.find(x => x.id === id);
+      if (ci) ci.qty++;
+      else cart.push({ id, qty: 1 });
+      updateCartBtn();
+      filterAll();
+      showToast(lang === 'ar' ? '✅ تم الإضافة للسلة' : '✅ Added to cart');
+      if (document.getElementById('cartPanel').classList.contains('open')) renderCartPanel();
+    }
+
+    function removeOneFromCart(id) {
+      const ci = cart.find(x => x.id === id);
+      if (!ci) return;
+      if (ci.qty > 1) ci.qty--;
+      else cart = cart.filter(x => x.id !== id);
+      updateCartBtn();
+      filterAll();
+      renderCartPanel();
+    }
+
+    function removeFromCart(id) {
+      cart = cart.filter(x => x.id !== id);
+      updateCartBtn();
+      filterAll();
+      renderCartPanel();
+    }
+
+    function clearCart() {
+      cart = [];
+      updateCartBtn();
+      filterAll();
+      renderCartPanel();
+      showToast(lang === 'ar' ? '🗑 تم مسح السلة' : '🗑 Cart cleared');
+    }
+
+    function updateCartBtn() {
+      const qty = cartTotalQty();
+      document.getElementById('cartCount').textContent = qty;
+      const btn = document.getElementById('cartBtn');
+      btn.classList.toggle('has', qty > 0);
+    }
+
+    function openCart() {
+      renderCartPanel();
+      document.getElementById('cartOverlay').classList.add('open');
+      document.getElementById('cartPanel').classList.add('open');
+    }
+
+    function closeCart() {
+      document.getElementById('cartOverlay').classList.remove('open');
+      document.getElementById('cartPanel').classList.remove('open');
+    }
+
+    function renderCartPanel() {
+      const body = document.getElementById('cartBody');
+      const foot = document.getElementById('cartFoot');
+      const summ = document.getElementById('cartSummary');
+
+      if (!cart.length) {
+        body.innerHTML = `<div class="cp-empty"><span class="eico">🛒</span><p>${lang === 'ar' ? 'السلة فاضية!' : 'Your cart is empty!'}</p><p style="font-size:12px;color:var(--tx3)">${lang === 'ar' ? 'أضف حيوانات من المتجر' : 'Browse the store to add pets'}</p></div>`;
+        foot.style.display = 'none';
+        return;
+      }
+
+      body.innerHTML = cart.map(ci => {
+        const a = DATA.find(x => x.id === ci.id);
+        if (!a) return '';
+        return `<div class="ci-row">
+  <div class="ci-img">
+    <img src="${a.img}" alt="${a.en}" loading="lazy" onerror="this.style.display='none';this.nextSibling.style.display='flex'">
+    <div class="ep" style="display:none">${a.em || '🐾'}</div>
+  </div>
+  <div class="ci-info">
+    <div class="ci-name">${lang === 'ar' ? a.ar : a.en}</div>
+    <div class="ci-price">${(a.price * ci.qty).toLocaleString()} ${lang === 'ar' ? 'جنيه' : 'EGP'}</div>
+  </div>
+  <div class="ci-controls">
+    <button class="delbtn" title="${lang === 'ar' ? 'حذف' : 'Remove'}" onclick="removeFromCart(${a.id})">🗑</button>
+    <button class="qbtn minus" onclick="removeOneFromCart(${a.id})">−</button>
+    <span class="qnum">${ci.qty}</span>
+    <button class="qbtn" onclick="addCart(${a.id})">+</button>
+  </div>
+</div>`;
+      }).join('');
+
+      const total = cartTotal();
+      const qty = cartTotalQty();
+      summ.innerHTML = `
+<div class="cs-row"><span>${lang === 'ar' ? 'عدد الحيوانات' : 'Animals'}</span><span>${qty}</span></div>
+<div class="cs-row total"><span>${lang === 'ar' ? 'الإجمالي' : 'Total'}</span><span>${total.toLocaleString()} ${lang === 'ar' ? 'جنيه' : 'EGP'}</span></div>`;
+      foot.style.display = 'block';
+    }
+
+    // ── MODAL ──
+    function openM(id) {
+      const a = DATA.find(x => x.id === id); if (!a) return;
+      const inCart = cart.find(x => x.id === id);
+      const specsHtml = Object.entries(a.sp).map(([k, v]) => `<div class="sp"><div class="spl">${k}</div><div class="spv">${v}</div></div>`).join('');
+      document.getElementById('mc').innerHTML = `
+<div class="mimg">
+  <img src="${a.img}" alt="${a.en}" loading="lazy" onerror="this.style.display='none';this.nextSibling.style.display='flex'">
+  <div class="mep" style="display:none">${a.em || '🐾'}</div>
+</div>
+<div class="mbody">
+  <div class="mcat">${catLabel(a.cat)}</div>
+  <div class="mname">${lang === 'ar' ? a.ar : a.en}</div>
+  <div class="men2">${lang === 'ar' ? a.en : a.ar}</div>
+  <div class="mdesc">${lang === 'ar' ? a.dar : a.den}</div>
+  <div class="mspecs">${specsHtml}</div>
+  <div class="mpr"><span class="cu">${lang === 'ar' ? 'جنيه مصري / ' : 'EGP '}</span>${a.price.toLocaleString()}</div>
+  <div class="mac">
+    <button class="bp2" onclick="addCart(${id});closeMo()">
+      🛒 ${inCart ? (lang === 'ar' ? `أضف واحد تاني (${inCart.qty} في السلة)` : `Add One More (${inCart.qty} in cart)`) : (lang === 'ar' ? 'أضف للسلة' : 'Add to Cart')}
+    </button>
+    <button class="bs2" onclick="closeMo()">${lang === 'ar' ? 'إغلاق' : 'Close'}</button>
+  </div>
+</div>`;
+      document.getElementById('mo').classList.add('open');
+    }
+
+    function closeMo(e) {
+      if (e && e.target !== document.getElementById('mo')) return;
+      document.getElementById('mo').classList.remove('open');
+    }
+
+    let tt;
+    function showToast(msg, dur = 2200) {
+      document.getElementById('tmsg').textContent = msg;
+      const t = document.getElementById('toast');
+      t.classList.add('show');
+      clearTimeout(tt);
+      tt = setTimeout(() => t.classList.remove('show'), dur);
+    }
+
+    function toggleLang() {
+      lang = lang === 'ar' ? 'en' : 'ar';
+      const b = document.body;
+      if (lang === 'en') { b.classList.add('en'); b.setAttribute('dir', 'ltr'); b.setAttribute('lang', 'en'); }
+      else { b.classList.remove('en'); b.setAttribute('dir', 'rtl'); b.setAttribute('lang', 'ar'); }
+      document.querySelectorAll('.ar-t').forEach(el => el.style.display = lang === 'ar' ? '' : 'none');
+      document.querySelectorAll('.en-t').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
+      const inp = document.getElementById('searchInput');
+      inp.placeholder = lang === 'ar' ? 'ابحث... مثل: قط، كلب، ببغاء' : 'Search... e.g. cat, dog, parrot';
+      inp.value = '';
+      document.getElementById('priceVal').textContent = maxP.toLocaleString() + (lang === 'ar' ? ' جنيه' : ' EGP');
+      buildCats(); filterAll();
+      if (document.getElementById('cartPanel').classList.contains('open')) renderCartPanel();
+    }
+
+    // ── CHECKOUT ──
+    function openCheckout() {
+      if (!cart.length) return;
+      // render summary
+      const total = cartTotal();
+      const rows = cart.map(ci => {
+        const a = DATA.find(x => x.id === ci.id); if (!a) return '';
+        const name = lang === 'ar' ? a.ar : a.en;
+        return `<div class="co-srow">
+  <span class="co-sname">${name}</span>
+  <span class="co-sqty">× ${ci.qty}</span>
+  <span class="co-sprice">${(a.price * ci.qty).toLocaleString()} ${lang === 'ar' ? 'جنيه' : 'EGP'}</span>
+</div>`;
+      }).join('');
+      document.getElementById('coSummary').innerHTML = rows +
+        `<div class="co-total"><span>${lang === 'ar' ? 'الإجمالي' : 'Total'}</span><span>${total.toLocaleString()} ${lang === 'ar' ? 'جنيه' : 'EGP'}</span></div>`;
+      // reset fields
+      ['coName', 'coPhone1', 'coPhone2', 'coAddress', 'coNotes'].forEach(id => {
+        const el = document.getElementById(id); if (el) el.value = '';
+      });
+      clearErrors();
+      document.getElementById('coModal').classList.add('open');
+    }
+
+    function closeCoModal(e) {
+      if (e && e.target !== document.getElementById('coModal')) return;
+      document.getElementById('coModal').classList.remove('open');
+    }
+
+    function clearErrors() {
+      document.querySelectorAll('.co-field input.err').forEach(el => el.classList.remove('err'));
+      document.querySelectorAll('.err-msg.show').forEach(el => el.classList.remove('show'));
+    }
+
+    function showErr(inputId, msgArId, msgEnId) {
+      const inp = document.getElementById(inputId);
+      if (inp) inp.classList.add('err');
+      const ar = document.getElementById(msgArId);
+      const en = document.getElementById(msgEnId);
+      if (lang === 'ar' && ar) ar.classList.add('show');
+      else if (en) en.classList.add('show');
+    }
+
+    function sendWhatsApp() {
+      clearErrors();
+      const name = document.getElementById('coName').value.trim();
+      const phone1 = document.getElementById('coPhone1').value.trim();
+      const phone2 = document.getElementById('coPhone2').value.trim();
+      const address = document.getElementById('coAddress').value.trim();
+      const notes = document.getElementById('coNotes').value.trim();
+
+      let valid = true;
+      if (!name) { showErr('coName', 'errName', 'errNameEn'); valid = false; }
+      if (!phone1 || !/^[\d\+\-\s]{8,15}$/.test(phone1)) { showErr('coPhone1', 'errPhone1', 'errPhone1En'); valid = false; }
+      if (!address) { showErr('coAddress', 'errAddr', 'errAddrEn'); valid = false; }
+      if (!valid) return;
+
+      // ── BUILD MESSAGE ──
+      const total = cartTotal();
+      const qty = cartTotalQty();
+      let itemsAr = '', itemsEn = '';
+      cart.forEach(ci => {
+        const a = DATA.find(x => x.id === ci.id); if (!a) return;
+        itemsAr += `  • ${a.ar} × ${ci.qty}  ─  ${(a.price * ci.qty).toLocaleString()} جنيه\n`;
+        itemsEn += `  • ${a.en} × ${ci.qty}  ─  EGP ${(a.price * ci.qty).toLocaleString()}\n`;
+      });
+
+      const msgAr =
+        `🐾 *طلب جديد من بيتس هوم*
+━━━━━━━━━━━━━━━━━━━━
+
+👤 *اسم العميل:* ${name}
+📞 *فون 1:* ${phone1}${phone2 ? `\n📞 *فون 2:* ${phone2}` : ''}
+📍 *العنوان:* ${address}${notes ? `\n📝 *ملاحظات:* ${notes}` : ''}
+
+━━━━━━━━━━━━━━━━━━━━
+🛒 *الحيوانات المطلوبة (${qty} حيوان):*
+${itemsAr}
+━━━━━━━━━━━━━━━━━━━━
+💰 *الإجمالي: ${total.toLocaleString()} جنيه مصري*
+━━━━━━━━━━━━━━━━━━━━
+✅ أرجو تأكيد الطلب وتحديد موعد الاستلام`;
+
+      const msgEn =
+        `🐾 *New Order from Pets Home*
+━━━━━━━━━━━━━━━━━━━━
+
+👤 *Name:* ${name}
+📞 *Phone 1:* ${phone1}${phone2 ? `\n📞 *Phone 2:* ${phone2}` : ''}
+📍 *Address:* ${address}${notes ? `\n📝 *Notes:* ${notes}` : ''}
+
+━━━━━━━━━━━━━━━━━━━━
+🛒 *Ordered Animals (${qty} item${qty > 1 ? 's' : ''}):*
+${itemsEn}
+━━━━━━━━━━━━━━━━━━━━
+💰 *Total: EGP ${total.toLocaleString()}*
+━━━━━━━━━━━━━━━━━━━━
+✅ Please confirm the order and delivery time`;
+
+      const msg = lang === 'ar' ? msgAr : msgEn;
+      const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+      // close modal after sending
+      document.getElementById('coModal').classList.remove('open');
+      showToast(lang === 'ar' ? '📲 جاري فتح واتساب...' : '📲 Opening WhatsApp...', 3000);
+    }
+
+    init();
+  </script>
+</body>
+
+</html>
